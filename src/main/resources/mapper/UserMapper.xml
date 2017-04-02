@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junaya.summer.api.user.UserMapper">
+    <update id="updateUserIfNecessary">
+        UPDATE user
+        <set>
+            <if test="password != null">password=#{password},</if>
+            <if test="loginAt != null">loginAt=#{loginAt},</if>
+            <if test="mobile != null">mobile=#{mobile},</if>
+            <if test="appId != null">appId=#{appId}</if>
+        </set>
+        WHERE uid = #{uid}
+    </update>
+</mapper>
